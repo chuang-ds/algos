@@ -1,4 +1,4 @@
-function selectionSort(arr){
+function insertionSort(arr){
     for (var i = 1; i<arr.length; i++){
         for (var j = i; j > 0; j--){
             if (arr[j-1] > arr[j]){
@@ -14,4 +14,4 @@ function selectionSort(arr){
     return arr;
 }
 
-console.log(selectionSort([3,4,38,25,2,20,23]));
+console.log(insertionSort([3,4,38,25,2,20,23]));
