@@ -136,7 +136,11 @@ countDown();
 
 // Based on earlier “Countdown by Fours”, given lowNum, highNum, mult, print multiples of mult from highNum down to lowNum, using a FOR. For (2,9,3), print 9 6 3 (on successive lines).
 function countDown(lowNum, highNum, mult) {
-    for(var i = highNum; i>lowNum; i -= mult) {
+    var start = highNum;
+    while(start % mult != 0) {
+        start--;
+    }
+    for(var i = start; i>lowNum; i -= mult) {
         console.log(i);
     }
 }
