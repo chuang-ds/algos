@@ -5,10 +5,9 @@ function isZipCode(str){
     }
     // iterate thru each char and see if number
     for (var i = 0; i<str.length; i++){
-        if(!isNaN(str.charAt(i))){
-            continue;
+        if(isNaN(str.charAt(i))){
+            return false;
         }
-        return false;
     }
     return true;
 }
