@@ -67,3 +67,21 @@ function removeDuplicates(arr) {
     return arr;
 }
 console.log(removeDuplicates(['a','b','b','c',1,1,3,5]))
+
+function removeDupesV2(arr) {
+    if (arr.length <= 1) { // If array is empty or has only one value, no duplicates possible
+        return;
+    }
+    var lastUniqueVal = arr[0];
+    var nextUniqueInd = 1; // The index for where the next unique value will be put in the array
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i] != lastUniqueVal) {
+            lastUniqueVal = arr[i];
+            arr[nextUniqueInd] = arr[i];
+            nextUniqueInd++;
+        }
+    }
+    arr.length = nextUniqueInd; // Remove the duplicates
+    return arr;
+}
+console.log(removeDupesV2(['a','b','b','c',1,1,3,5]))
