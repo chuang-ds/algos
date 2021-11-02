@@ -37,14 +37,18 @@ console.log(betterThreesFives(100,4000000));
 // Change is inevitable (especially when breaking a twenty). Make generateCoinChange(cents). Accept a number of American cents, compute and print how to represent that amount with the smallest number of coins. Common American coins are pennies (1 cent), nickels (5 cents), dimes (10 cents), and quarters (25 cents).
 
 function generateChange(cents) {
-    let numQuarter = 0, numDime = 0, numNickel = 0, numPenny = 0;
-    numQuarter = Math.floor(cents / 25);
-    let remQuarter = cents % 25;
-    numDime = Math.floor(remQuarter / 10);
-    let remDime = remQuarter % 10;
-    numNickel = Math.floor(remDime / 5);
-    let remNickel = remDime % 5;
+    function helper(value, coin) {
+        let numCoin = Math.floor(value / coin);
+        let remainder = value % coin;
+        return [numCoin, remainder];
+    }
+    [numFifty, remFifty] = helper(cents, 50);
+    [numQuarter, remQuarter] = helper(remFifty, 25);
+    [numDime, remDime] = helper(remQuarter, 10);
+    [numNickel, remNickel] = helper(remDime, 5);
+    numPenny = remNickel;
     console.log("For " + cents + " cents, there are:");
+    console.log(numFifty + " 50 cent coins");
     console.log(numQuarter + " quarters");
     console.log(numDime + " dimes");
     console.log(numNickel + " nickels");
