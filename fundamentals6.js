@@ -42,20 +42,21 @@ function generateChange(cents) {
         let remainder = value % coin;
         return [numCoin, remainder];
     }
-    [numFifty, remFifty] = helper(cents, 50);
+    [numDollar, remDollar] = helper(cents, 100);
+    [numFifty, remFifty] = helper(remDollar, 50);
     [numQuarter, remQuarter] = helper(remFifty, 25);
     [numDime, remDime] = helper(remQuarter, 10);
     [numNickel, remNickel] = helper(remDime, 5);
     numPenny = remNickel;
     console.log("For " + cents + " cents, there are:");
+    console.log(numDollar + " dollar coins");
     console.log(numFifty + " 50 cent coins");
     console.log(numQuarter + " quarters");
     console.log(numDime + " dimes");
     console.log(numNickel + " nickels");
     console.log(remNickel + " pennies");
 }
-generateChange(99);
+generateChange(140);
 generateChange(87);
-generateChange(53);
-generateChange(11);
+generateChange(25);
 generateChange(3);
