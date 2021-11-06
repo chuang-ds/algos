@@ -100,4 +100,15 @@ function twelveBarBlues() {
 twelveBarBlues();
 
 // Fibonacci -- Create a function to generate Fibonacci numbers. In this famous mathematical sequence, each number is the sum of the previous two, starting with values 0 and 1. Your function should accept one argument, an index into the sequence (where 0 corresponds to the initial value, 4 corresponds to the value four later, etc). 
-function fibonacci()
+function wrapper(m) {
+    function fibonacci(n) {
+        if(n < 2) {
+            return n;
+        }
+        return fibonacci(n-2) + fibonacci(n-1);
+    }
+    for(let i = 0; i <= m; i++) {
+        console.log("fibonacci("+i+") = " + fibonacci(i));
+    }
+}
+wrapper(8);
