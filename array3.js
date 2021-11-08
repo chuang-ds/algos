@@ -64,3 +64,40 @@ function makeAcronym(str) {
 console.log(makeAcronym("there's no free lunch - gotta pay yer way"));
 console.log(makeAcronym("Live from New York, it's Saturday Night!"));
 
+// Arrays: move zeros to the left -- Given an integer array, move all elements that are 0 to the left while maintaining the order of other elements in the array. The array has to be modified in-place.
+function dropZero(arr) {
+    for(let i=0; i<arr.length; i++) {
+        if(arr[i] == 0) {
+            for(let j=i; j<arr.length; j++) {
+                arr[j] = arr[j+1];
+            }
+            arr.length = arr.length-1;
+        }
+    }
+    return arr;
+}
+console.log(dropZero([1,10,20,0,59,63,0,88,0]));
+
+let moveZeroLeft = function(arr) {
+    if(arr.length < 1) {
+        return;
+    }
+    
+    let readIdx = arr.length - 1;
+    let writeIdx = arr.length - 1;
+    while (readIdx >= 0) {
+        if(arr[readIdx] != 0) {
+            arr[writeIdx] = arr[readIdx];
+            writeIdx--;
+        }
+        readIdx--;
+    }
+
+    while (writeIdx >= 0) {
+        arr[writeIdx] = 0;
+        writeIdx--;
+    }
+}
+let a = [1,10,20,0,59,63,0,88,0];
+moveZeroLeft(a);
+console.log(a);
