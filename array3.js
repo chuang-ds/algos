@@ -135,3 +135,20 @@ console.log(result.length);
 for (let i=0; i < result.length; i++) {
     console.log(result[i].first + ", " + result[i].second);
 }
+
+// rotate a square (N x N) matrix by 90 degrees in the anti-clockwise direction without using any extra space
+function rotateSquare(arr) {
+    let temp = 0;
+    let N = arr.length;
+    for (let x=0; x < N/2; x++) {
+        for (let y=x; y < N-x-1; y++) {
+            temp = arr[x][y];
+            arr[x][y] = arr[y][N-x-1];
+            arr[y][N-x-1] = arr[N-x-1][N-y-1];
+            arr[N-x-1][N-y-1] = arr[N-y-1][x];
+            arr[N-y-1][x] = temp;
+        }
+    }
+    return arr;
+}
+console.log(rotateSquare([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]));
