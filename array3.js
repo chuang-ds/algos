@@ -152,3 +152,72 @@ function rotateSquare(arr) {
     return arr;
 }
 console.log(rotateSquare([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]));
+
+// You are given an array with positive numbers. Explain how you will find the largest subset of the array containing elements that are Fibonacci numbers.
+// solution: 1. find max in array, 2. generate Fibonacci numbers up to max, 3. traverse array and match elements in array to step 2
+function subsetFibonacci(arr) {
+    let max = Math.max(...arr);
+    function fibonacci(n, max) {
+        if (n < 2) {
+            return n;
+        }
+        for (var i = 0; i <= max; i++) {
+            return fibonacci(n-1) + fibonacci(n-2);
+        }
+    }
+}
+subsetFibonacci([1,3,5,8,2]);
+
+
+function fibonacci(n) {
+    if (n < 2) {
+        return n;
+    }
+    for (var i = 0; i <= n; i++) {
+        return fibonacci(n-1) + fibonacci(n-2);
+    }
+}
+console.log(fibonacci(5));
+
+function missingNum(nums) {
+    let completeNum = Array.from(Array(nums.length+1).keys(0));
+    console.log(completeNum);
+    let missingNum = completeNum.filter(num => );
+    console.log(missingNum);
+}
+missingNum([3,1,5,6,1,2,9]);
+
+// determine whether array "sequence" is a subset of array "array"
+function isValidSubsequence(array, sequence) {
+    let subIdx = 0;
+    let arrIdx = 0;
+    while (subIdx < sequence.length) {
+        // console.log("in outter loop");
+        while (arrIdx < array.length) {
+            // console.log("in inner loop");
+            if(array[arrIdx] == sequence[subIdx]) {
+                // match, move forward both arrays
+                arrIdx++;
+                subIdx++;
+                // console.log("arrIdx = ", arrIdx);
+                // console.log("subIdx = ", subIdx);
+            }
+            else {
+                // no match, move forward just main array
+                arrIdx++;
+                // console.log("arrIdx = ", arrIdx);
+            }
+        } // at end of main array, check if at end of subarray, if so then return true, else false
+        if (subIdx == sequence.length && array[arrIdx - 1] == sequence[subIdx-1]) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    // at end of subarray, return false
+    }
+    return false;
+}
+array = [5, 1, 22, 25, 6, -1, 8, 10];
+sequence = [1, 6, -1, 1];
+console.log(isValidSubsequence(array, sequence))
