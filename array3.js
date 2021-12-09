@@ -208,8 +208,9 @@ function isValidSubsequence(array, sequence) {
                 // console.log("arrIdx = ", arrIdx);
             }
         } // at end of main array, check if at end of subarray, if so then return true, else false
-        if (subIdx == sequence.length && array[arrIdx - 1] == sequence[subIdx-1]) {
-            return true;
+        // if (subIdx == sequence.length && array[arrIdx - 1] == sequence[subIdx-1]) {
+        if (subIdx == sequence.length) {
+                return true;
         }
         else {
             return false;
@@ -219,5 +220,20 @@ function isValidSubsequence(array, sequence) {
     return false;
 }
 array = [5, 1, 22, 25, 6, -1, 8, 10];
-sequence = [1, 6, -1, 1];
+sequence = [1, 6, 10];
 console.log(isValidSubsequence(array, sequence))
+
+// two number sum - given an array and target sum, find the subarray that sums to target number
+function twoNumberSum(array, targetSum) {
+    for (let i = 0; i < array.length; i++) {
+        for (let j = i+1; j < array.length; j++) {
+            if (array[i] + array[j] == targetSum) {
+                return ([array[i], array[j]]);
+            }
+        }
+    }
+}
+
+array = [3, 5, -4, 8, 11, 1, -1, 6];
+targetSum = 10;
+console.log(twoNumberSum(array, targetSum));
