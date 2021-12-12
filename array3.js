@@ -237,3 +237,44 @@ function twoNumberSum(array, targetSum) {
 array = [3, 5, -4, 8, 11, 1, -1, 6];
 targetSum = 10;
 console.log(twoNumberSum(array, targetSum));
+
+// write a function that takes a non-empty sorted array of integers and returns new array of same length with squares of the original integers also sorted
+function sortedSquaredArray(array) {
+    let newArray = [];
+    for (var i = 0; i < array.length; i++) {
+        newArray[i] = array[i] * array[i];
+    }
+    if (array[0] < 0) {
+        return newArray.sort(function(a, b) { return a - b;});
+    } else {
+        return newArray;
+    }
+}
+var array = [-5, -4, -3, -2, -1];
+console.log(sortedSquaredArray(array));
+
+// tournament winner.  array named competitions contains names of home team, visiting team.  array named results contains 0 if home team won, 1 if visiting team won.  Each win counts as 3 pts.  Determine winning team.  index in each array represents match between teams and results
+function tournamentWinner(competitions, results) {
+    const pointsMap = new Map();
+    for (let i = 0; i < competitions.length; i++) {
+        currentPts = pointsMap.get(competitions[i][1-results[i]]);
+        if (isNaN(currentPts)) {
+            pointsMap.set(competitions[i][1-results[i]], 3);
+        } else {
+            currentPts += 3;
+            pointsMap.set(competitions[i][1-results[i]], currentPts);
+        }
+    }
+    let maxScore = 0;
+    let winner = "";
+    for (let [key, value] of pointsMap) {
+        if (value > maxScore) {
+            winner = key;
+            maxScore = value;
+        }
+    }
+    return winner;
+  }
+var competitions = [["html", "c#"],["c#", "python"],["python","html"],];
+var results = [0, 0, 1];
+console.log(tournamentWinner(competitions, results));
