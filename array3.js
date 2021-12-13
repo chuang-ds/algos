@@ -278,3 +278,23 @@ function tournamentWinner(competitions, results) {
 var competitions = [["html", "c#"],["c#", "python"],["python","html"],];
 var results = [0, 0, 1];
 console.log(tournamentWinner(competitions, results));
+
+// given array of coins that have face value indicated (yes, dumb problem where we can have 7 cent coin), determine the minimum change that you cannot create with any combination of coins in array
+function nonConstructibleChange(coins) {
+	if (coins.length == 1) {
+		if (coins[0] > 1) {
+			return 1;
+		}
+	}
+    coins.sort(function(a,b) {return a-b});
+    let currentTotal = 0;
+    for (i = 0; i < coins.length; i++) {
+        currentTotal += coins[i];
+        if (coins[i+1] > (currentTotal+1)) {
+            return currentTotal+1;
+        }
+    }
+    return currentTotal+1;
+  }
+var coins = [87];
+console.log(nonConstructibleChange(coins));
