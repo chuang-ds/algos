@@ -16,7 +16,7 @@ Sample output
 [-1, 11] // the numbers could be in reverse order
 */
 
-// My solution, two indexes to iterate through array
+// solution using two indexes to iterate through array
 function twoNumberSum(array, targetSum) {
     // outside loop with left element
     for (var i=0; i<array.length-1; i++)
@@ -30,7 +30,7 @@ function twoNumberSum(array, targetSum) {
     return []
   }
   
-  // Do not edit the line below.
+  // tests
   console.log(twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 10));
   console.log(twoNumberSum([4, 6], 10));
   console.log(twoNumberSum([4, 6, 1], 5));
@@ -62,6 +62,7 @@ function twoNumberSum(array, targetSum) {
     return []
   }
 
+  // tests
   console.log(twoNumberSum2([3, 5, -4, 8, 11, 1, -1, 6], 10));
   console.log(twoNumberSum2([4, 6], 10));
   console.log(twoNumberSum2([4, 6, 1], 5));
