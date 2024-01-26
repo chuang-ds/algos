@@ -7,17 +7,22 @@ Note that a single number in an array and the array itself are both valid subseq
 
 // solution
 function isValidSubsequence(array, sequence) {
-    for (var i=0; i<sequence.length; i++) {
-        sequenceFound = false;
-        for (var j=0; j<array.length && !sequenceFound; j++) {
-            if (sequence[i]==array[j]) {
-                sequenceFound = true;
-                if (i == sequence.length-1) return true;
+    sequencePointer = 0;
+    arrayPointer = 0;
+    while (sequencePointer < sequence.length) {
+        while (arrayPointer < array.length) {
+            if (sequence[sequencePointer] == array[arrayPointer]) {
+                sequencePointer++;
+                arrayPointer++;
+                if (sequencePointer == sequence.length) return true;
+                if (arrayPointer == array.length) return false;
+            }
+            else {
+                arrayPointer++;
+                if (arrayPointer == array.length) return false;
             }
         }
-        if (sequenceFound == false) return false;
     }
-    return false;
   }
   
 // tests
