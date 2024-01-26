@@ -10,18 +10,15 @@ function isValidSubsequence(array, sequence) {
     sequencePointer = 0;
     arrayPointer = 0;
     while (sequencePointer < sequence.length) {
-        while (arrayPointer < array.length) {
-            if (sequence[sequencePointer] == array[arrayPointer]) {
-                sequencePointer++;
-                arrayPointer++;
-                if (sequencePointer == sequence.length) return true;
-                if (arrayPointer == array.length) return false;
-            }
-            else {
-                arrayPointer++;
-                if (arrayPointer == array.length) return false;
-            }
+        if (sequence[sequencePointer] == array[arrayPointer]) {
+            sequencePointer++;
+            arrayPointer++;
+            if (sequencePointer == sequence.length) return true;
         }
+        else {
+            arrayPointer++;
+        }
+        if (arrayPointer == array.length) return false;
     }
   }
   
