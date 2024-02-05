@@ -14,7 +14,7 @@ function nonConstructibleChange(coins) {
     // first set minChange we cannot make as 0
     minChange = 0;
     // iterate thru coins and start looking for min change
-    for (i=1; i<coins.length; i++) {
+    for (i=0; i<coins.length; i++) {
         // increment minChange by value of current coin being evaluated
         minChange += coins[i];
         // if next larger coin is more than 1 denomination greater than minChange then minChange+1 is

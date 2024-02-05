@@ -1,6 +1,6 @@
 /*
 tournament winner.  array named competitions contains names of home team, visiting team.
-array named results contains 0 if home team won, 1 if visiting team won.  Each win counts as 3 pts.
+array named results contains 0 if away team won, 1 if home team won.  Each win counts as 3 pts.
 Determine winning team.  index in each array represents match between teams and results
 
 Sample input:
