@@ -17,8 +17,24 @@ answer = 13
 */
 
 function findClosestValueInBst(tree, target) {
-    minDiff = tree.value - target;
-
+  currentNode = tree;
+  currentMin = Math.abs(target - currentNode.value);
+  while (currentNode != null) {
+    if (Math.abs(currentNode.value - target) <= currentMin) {
+      currentMin = Math.abs(currentNode.value - target);
+      currentClosest = currentNode.value;
+    }
+    if (currentMin == 0) {
+      break
+    }
+    if (currentNode.value < target) {
+      currentNode = currentNode.right;
+    }
+    else {
+      currentNode = currentNode.left;
+    }
+  }
+  return currentClosest;
 }
 
 // This is the class of the input tree. Do not edit.
