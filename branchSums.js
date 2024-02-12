@@ -47,7 +47,7 @@ class BinaryTree {
     }
 
     // if there is leaf right then call recursive function passing in right node, currentSum, and results array
-    if (rootright) {
+    if (root.right) {
       branchSums(root.right, currentSum, results);
     }
 
